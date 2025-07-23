@@ -1,9 +1,12 @@
 import { FC, SVGProps } from 'react'
 
+import AwsIcon from '../assets/icons/aws.svg'
 import Earning from '../assets/icons/earning.svg'
 import ExpressjsIcon from '../assets/icons/express.svg'
 import JavaScriptIcon from '../assets/icons/javascript.svg'
+import LangGraphIcon from '../assets/icons/langgraph.svg'
 import Likes from '../assets/icons/likes.svg'
+import N8nIcon from '../assets/icons/n8n.svg'
 import NestjsIcon from '../assets/icons/nest.svg'
 import NextjsIcon from '../assets/icons/nextjs.svg'
 import NodejsIcon from '../assets/icons/nodejs.svg'
@@ -309,6 +312,7 @@ const PhoneIcon: FC<SVGProps<SVGSVGElement>> = (props) => {
 export {
   ArrowLeftIcon,
   ArrowRightIcon,
+  AwsIcon,
   BurgerIcon,
   CheckIcon,
   ChevronRightIcon,
@@ -320,9 +324,11 @@ export {
   GithubIcon,
   Instagram,
   JavaScriptIcon,
+  LangGraphIcon,
   Likes,
   LinkedIn,
   MsgIcon,
+  N8nIcon,
   NestjsIcon,
   NextjsIcon,
   NodejsIcon,

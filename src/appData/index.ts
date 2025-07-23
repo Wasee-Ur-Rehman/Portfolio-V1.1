@@ -1,8 +1,10 @@
 // Data for portfolio
 import {
+  AwsIcon,
   ExpressjsIcon,
   JavaScriptIcon,
-  NestjsIcon,
+  LangGraphIcon,
+  N8nIcon,
   NextjsIcon,
   NodejsIcon,
   ReactIcon,
@@ -68,34 +70,34 @@ export const projects = [
 // Service Data
 export const serviceData = [
   {
-    icon: JavaScriptIcon,
-    title: 'JavaScript Development',
-    shortDescription: 'Creating dynamic and interactive web applications using JavaScript.',
-  },
-  {
     icon: ReactIcon,
-    title: 'React.js Development',
-    shortDescription: 'Building modern and responsive user interfaces with React.js.',
+    title: 'Full Stack Development',
+    shortDescription: 'End-to-end web application development with modern JavaScript/TypeScript stack.',
   },
   {
-    icon: NodejsIcon,
-    title: 'Node.js Backend',
-    shortDescription: 'Developing scalable server-side applications using Node.js.',
+    icon: LangGraphIcon,
+    title: 'AI Automation Engineering',
+    shortDescription: 'Building intelligent automation workflows using LangGraph and AI technologies.',
+  },
+  {
+    icon: N8nIcon,
+    title: 'Workflow Automation',
+    shortDescription: 'Creating automated business processes and integrations using n8n and similar tools.',
   },
   {
     icon: NextjsIcon,
-    title: 'Next.js Development',
-    shortDescription: 'Creating server-rendered React applications with Next.js.',
+    title: 'Next.js Applications',
+    shortDescription: 'Creating server-side rendered and static site applications with Next.js.',
   },
   {
-    icon: TypescriptIcon,
-    title: 'TypeScript Development',
-    shortDescription: 'Ensuring robust and maintainable code with TypeScript.',
+    icon: NodejsIcon,
+    title: 'Backend Development',
+    shortDescription: 'Developing scalable server-side applications using Node.js and Express.js.',
   },
   {
-    icon: TailwindCSS,
-    title: 'Tailwind CSS Styling',
-    shortDescription: 'Designing beautiful and responsive interfaces with Tailwind CSS.',
+    icon: JavaScriptIcon,
+    title: 'Teaching & Mentoring',
+    shortDescription: 'Providing guidance and assistance as a teacher assistant in programming concepts.',
   },
 ]
 
@@ -126,12 +128,20 @@ export const skillList = [
     icon: ExpressjsIcon,
   },
   {
-    name: 'Nest.js',
-    icon: NestjsIcon,
-  },
-  {
     name: 'Socket.io',
     icon: SocketIcon,
+  },
+  {
+    name: 'AWS',
+    icon: AwsIcon,
+  },
+  {
+    name: 'LangGraph',
+    icon: LangGraphIcon,
+  },
+  {
+    name: 'n8n',
+    icon: N8nIcon,
   },
 ]
 
