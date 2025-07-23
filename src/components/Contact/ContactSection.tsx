@@ -8,10 +8,10 @@ const ContactSection = () => {
       className="bg-secondary my-8 grid grid-cols-1 gap-16 rounded-4xl p-8 md:my-16 md:grid-cols-2 md:gap-8 lg:gap-12">
       <div className="flex flex-col justify-between gap-8">
         <div>
-          <h3 className="text-neutral text-3xl font-bold">Let's Talk</h3>
-          <h4 className="text-accent text-2xl font-bold md:text-3xl">Let's work together</h4>
+          <h3 className="text-neutral text-3xl font-bold">Get In Touch</h3>
+          <h4 className="text-accent text-2xl font-bold md:text-3xl">Let's discuss your project</h4>
           <p className="text-neutral mt-8">
-            Ready to bring your ideas to life with modern web technologies. Let's discuss your project and create something amazing together.
+            I'm available for freelance projects, consulting opportunities, and full-time positions. Let's explore how my expertise can benefit your organization.
           </p>
         </div>
 

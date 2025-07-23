@@ -12,7 +12,7 @@ const Footer = () => {
             <span className="text-neutral text-lg font-medium">Wasee Ur Rehman</span>
           </h5>
           <p className="text-tertiary-content">
-            Software Engineer specializing in full-stack web development with expertise in React, Next.js, Node.js, and modern web technologies. Passionate about creating scalable and efficient solutions.
+            Full Stack Developer and AI Automation Engineer delivering innovative solutions with cutting-edge technologies. Specializing in web development, automation workflows, and intelligent systems.
           </p>
           <a
             href="#"

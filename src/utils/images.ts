@@ -1,3 +1,3 @@
-import HeroImage from '../assets/images/hero-placeholder.png'
+import HeroImage from '../assets/images/profile-image.jpg'
 
 export { HeroImage }

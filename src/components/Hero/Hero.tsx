@@ -7,7 +7,7 @@ import Ellipse from './Ellipse'
 
 const Hero = () => {
   const ellipseRef = useRotatingAnimation()
-  const role = useRoleSwitcher({ roles: ['FULL STACK DEVELOPER', 'AI AUTOMATION ENGINEER', 'TEACHER ASSISTANT'] })
+  const role = useRoleSwitcher({ roles: ['SOFTWARE ENGINEER', 'AI AUTOMATION SPECIALIST', 'FULL STACK DEVELOPER'] })
 
   return (
     <section className="bg-primary bg-small-glow bg-small-glow-position md:bg-large-glow-position lg:bg-large-glow min-h-[calc(dvh-4rem)] bg-no-repeat">
@@ -19,7 +19,7 @@ const Hero = () => {
           </h1>
 
           <h2 className="text-neutral mt-3">
-            Passionate about building scalable web applications and solving complex problems with modern technologies
+            Delivering innovative software solutions and intelligent automation systems for modern businesses
           </h2>
 
           <div className="mt-6 flex flex-wrap gap-6">
@@ -48,7 +48,7 @@ const Hero = () => {
               priority={true}
               sizes="(min-width: 1024px) 25.75rem, (min-width: 768px) 20rem, (min-width: 640px) 15rem, 14rem"
               alt="Wasee Ur Rehman - Software Engineer & Full Stack Developer"
-              className="object-contain p-7"
+              className="object-cover rounded-full p-2"
             />
             <Ellipse
               ref={ellipseRef}

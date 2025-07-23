@@ -8,19 +8,19 @@ import Logo from './Logo'
 
 const navItems = [
   {
-    label: '_home',
+    label: 'Home',
     href: '/',
   },
   {
-    label: '_projects',
+    label: 'Projects',
     href: '/#projects',
   },
   {
-    label: '_services',
+    label: 'Services',
     href: '/#services',
   },
   {
-    label: '_contact-me',
+    label: 'Contact',
     href: '/#contact',
   },
 ]
@@ -58,12 +58,12 @@ const Navbar = () => {
         </div>
 
         <ul
-          className={`${isVisible ? 'flex' : 'hidden'} animate-fade-in bg-primary absolute top-16 left-0 z-10 h-dvh w-dvw flex-col md:static md:top-0 md:flex md:h-full md:w-[72%] md:flex-row lg:w-[70%]`}>
+          className={`${isVisible ? 'flex' : 'hidden'} animate-fade-in bg-primary absolute top-16 left-0 z-10 h-dvh w-dvw flex-col md:static md:top-0 md:flex md:h-full md:w-auto md:flex-row md:ml-auto`}>
           {navItems.map(({ label, href }) => (
             <li
               key={href}
               onClick={() => setIsVisible(false)}
-              className="border-border flex items-center border-b px-4 text-2xl md:border-y-0 md:border-e md:text-base md:first:border-s md:last:ml-auto md:last:border-none md:last:px-0 lg:px-8">
+              className="border-border flex items-center border-b px-4 text-2xl md:border-y-0 md:border-e md:text-base md:first:border-s md:last:border-none lg:px-8">
               <Link
                 href={href}
                 className={`text-primary-content hover:text-neutral w-full py-7 transition-all duration-150 md:py-0 ${pathname === href ? 'text-neutral cursor-text' : ''}`}>
