@@ -4,9 +4,6 @@ import './globals.css'
 import Footer from '@/components/Footer/Footer'
 import Navbar from '@/components/Navbar/Navbar'
 import ThemeMenu from '@/components/Theme/ThemeMenu'
-import { Poppins } from 'next/font/google'
-
-const poppins = Poppins({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'] })
 
 const title = 'Wasee Ur Rehman | Software Engineer & Full Stack Developer'
 
@@ -45,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="dark">
-      <body className={`${poppins.className}`}>
+      <body className="font-poppins">
         <header>
           <Navbar />
         </header>
