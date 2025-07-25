@@ -8,6 +8,7 @@ import ServiceSection from '@/components/Services/ServiceSection'
 import Skills from '@/components/Skills/Skills'
 import TestimonialSection from '@/components/Testimonials/TestimonialSection'
 import { getAllProjects, getAllRecommendations } from '@/services/index'
+import SmoothFollower from '@/components/UI/Cursor'
 
 export default async function Home() {
   const projects = await getAllProjects()
@@ -15,6 +16,7 @@ export default async function Home() {
 
   return (
     <main>
+      <SmoothFollower />
       <Hero />
       <Skills skills={skillList} />
       <div className="mx-auto my-8 max-w-[1200px] px-4 md:my-[3.75rem]">

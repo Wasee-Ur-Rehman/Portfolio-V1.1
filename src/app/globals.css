@@ -206,3 +206,25 @@ section {
 
   scrollbar-width: none;
 }
+
+/* globals.css */
+
+html[data-theme='dark'] {
+  --cursor-color: #ffffff;
+}
+
+html[data-theme='light'] {
+  --cursor-color: #000000;
+}
+
+html[data-theme='retro'] {
+  --cursor-color: #333333;
+}
+
+html[data-theme='aqua'] {
+  --cursor-color: #1F2937;
+  /* or any contrasting color you prefer */
+}
+
+
+/* Add more for other themes */
