@@ -6,36 +6,47 @@ import SectionHeading from '../SectionHeading/SectionHeading'
 import TestimonialCard from './TestimonialCard'
 
 interface TestimonialSectionProps {
-  testimonials: Testimonial[]
+  recommendations: Testimonial[]
 }
 
-const TestimonialSection: React.FC<TestimonialSectionProps> = ({ testimonials }) => {
+const TestimonialSection: React.FC<TestimonialSectionProps> = ({ recommendations }) => {
   const [activeCard, setActiveCard] = useState(0)
 
-  return (
-    <section id="testimonials">
-      <SectionHeading
-        title="Testimonials"
-        subtitle="Don't just take our word for it - see what actual users of our service have to say about their experience."
-      />
+  const handleScroll = (event: React.UIEvent<HTMLDivElement>) => {
+    const target = event.currentTarget
+    const cardWidth = target.children[0]?.clientWidth || 0
+    const scrollPosition = target.scrollLeft + target.clientWidth / 2
+    const newActiveCard = Math.floor(scrollPosition / (cardWidth + 32))
 
-      <div className="hide-scrollbar my-8 flex gap-8 overflow-x-auto">
-        {testimonials.map((testimonial, idx) => (
-          <TestimonialCard
-            key={idx}
-            testimonial={testimonial}
-            handleActiveCard={() => {
-              setActiveCard(idx)
-            }}
-          />
+    if (newActiveCard !== activeCard) {
+      setActiveCard(newActiveCard)
+    }
+  }
+
+  return (
+    <section id="recommendations">
+      <SectionHeading
+        title="Recommendations"
+        subtitle="Don't just take my word for it - see what my colleagues and mentors have to say about our time working together."
+      />
+      <div
+        onScroll={handleScroll}
+        className="hide-scrollbar my-4 flex items-start snap-x snap-mandatory gap-8 overflow-x-auto py-8"
+      >
+        {recommendations.map((recommendation, idx) => (
+          <div key={idx} className="w-[calc(100%-2rem)] flex-shrink-0 snap-center sm:w-auto">
+            <TestimonialCard testimonial={recommendation} />
+          </div>
         ))}
       </div>
 
-      <div className="flex items-center justify-center gap-1 sm:hidden">
-        {testimonials.map((_, idx) => (
+      {/* Mobile dot indicator */}
+      <div className="flex items-center justify-center gap-2 sm:hidden">
+        {recommendations.map((_, idx) => (
           <div
             key={idx}
-            className={`${idx === activeCard ? 'bg-accent size-[12px]' : 'size-[10px] bg-white/50'} rounded-full`}
+            className={`rounded-full transition-all duration-300 ${idx === activeCard ? 'bg-accent h-3 w-3' : 'bg-base-content/20 h-2 w-2'
+              }`}
           />
         ))}
       </div>

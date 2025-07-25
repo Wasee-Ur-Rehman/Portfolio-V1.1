@@ -33,28 +33,24 @@ const getAllProjects = async (): Promise<Project[]> => {
   }
 }
 
-const getAllTestimonials = async (): Promise<Testimonial[]> => {
+const getAllRecommendations = async (): Promise<Testimonial[]> => {
   try {
-    const testimonialsPath = path.join(process.cwd(), '/content/testimonials')
-    const testimonialsName = await fs.readdir(testimonialsPath)
+    const recommendationsPath = path.join(process.cwd(), '/content/Testimonials')
+    const recommendationFiles = await fs.readdir(recommendationsPath)
 
-    const testimonials = await Promise.all(
-      testimonialsName.map(async (projectName) => {
-        const filePath = path.join(testimonialsPath, projectName)
-        const projectDetails = await fs.readFile(filePath, 'utf8')
-        return JSON.parse(projectDetails)
-      }),
+    const recommendations = await Promise.all(
+      recommendationFiles.map(async (fileName) => {
+        const filePath = path.join(recommendationsPath, fileName)
+        const fileContents = await fs.readFile(filePath, 'utf8')
+        return JSON.parse(fileContents)
+      })
     )
-
-    // Sort testimonials by date
-    testimonials.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-
-    return testimonials
+    return recommendations
   } catch (error) {
-    // Handle errors
-    console.error('Error:', error)
+    console.error('Error fetching recommendations:', error)
     return []
   }
 }
 
-export { getAllProjects, getAllTestimonials }
+// Update the export to use the new function name
+export { getAllProjects, getAllRecommendations }

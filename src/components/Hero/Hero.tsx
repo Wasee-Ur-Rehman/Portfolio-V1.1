@@ -12,18 +12,12 @@ const Hero = () => {
 
   return (
     <section className="bg-primary bg-small-glow bg-small-glow-position md:bg-large-glow-position lg:bg-large-glow min-h-[calc(dvh-4rem)] bg-no-repeat">
-      {/*
-        MODIFICATION:
-        - On mobile (default), `flex-col-reverse` is used to stack items vertically with the second item (image) appearing first.
-        - On medium screens and up (`md:grid`), it switches to a grid layout.
-        - `items-center` ensures proper alignment in both flex and grid contexts.
-      */}
       <div className="mx-auto flex max-w-[1200px] flex-col-reverse items-center gap-8 px-4 pt-32 pb-10 md:grid md:grid-cols-2 md:gap-4 lg:p-4 lg:pt-20">
 
         {/* Text content section */}
-        <div className="flex flex-col justify-center text-center md:text-left lg:max-w-[33.75rem]">
+        <div className="flex flex-col justify-center text-center md:text-left lg:max-w-[33.75rem] md:pt-[5.5rem]">
           <h1>
-            <span className="text-neutral mb-2 block text-3xl font-bold">Hi - I'm Wasee Ur Rehman</span>
+            <span className="text-neutral mb-2 block text-2xl font-bold sm:text-3xl">Hi - I'm Wasee Ur Rehman</span>
             <span className="text-accent block text-[1.75rem] font-bold">{role}</span>
           </h1>
 
@@ -36,9 +30,9 @@ const Hero = () => {
               href="#contact"
               aria-label="Contact me"
               className="bg-accent min-w-32 cursor-pointer rounded-lg px-[14px] py-[10px] text-center text-sm font-medium text-[#00071E] 
-                         shadow-lg shadow-accent/20 transition-all duration-500 ease-out 
-                         hover:shadow-xl hover:shadow-accent/30 hover:scale-105 hover:bg-accent/90 
-                         active:scale-95 active:shadow-md">
+                 shadow-lg shadow-accent/20 transition-all duration-500 ease-out 
+                 hover:shadow-xl hover:shadow-accent/30 hover:scale-105 hover:bg-accent/90 
+                 active:scale-95 active:shadow-md">
               Get in Touch
             </a>
             <a
@@ -46,9 +40,9 @@ const Hero = () => {
               download="WaseeUrRehman_Resume.pdf"
               aria-label="Download Resume"
               className="group text-accent bg-transparent border-2 border-accent cursor-pointer rounded-lg px-[14px] py-[10px] text-sm font-medium
-                         shadow-lg shadow-accent/10 transition-all duration-500 ease-out 
-                         hover:bg-accent hover:text-[#00071E] hover:shadow-xl hover:shadow-accent/30 hover:scale-105
-                         active:scale-95 active:shadow-md">
+                 shadow-lg shadow-accent/10 transition-all duration-500 ease-out 
+                 hover:bg-accent hover:text-[#00071E] hover:shadow-xl hover:shadow-accent/30 hover:scale-105
+                 active:scale-95 active:shadow-md">
               Download Resume
             </a>
           </div>
@@ -60,9 +54,9 @@ const Hero = () => {
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"
               className="group flex h-12 w-12 items-center justify-center rounded-full border-2 border-accent 
-                         shadow-lg shadow-accent/20 transition-all duration-500 ease-out 
-                         hover:bg-accent hover:shadow-xl hover:shadow-accent/30 hover:scale-110 
-                         active:scale-95 active:shadow-md">
+                 shadow-lg shadow-accent/20 transition-all duration-500 ease-out 
+                 hover:bg-accent hover:shadow-xl hover:shadow-accent/30 hover:scale-110 
+                 active:scale-95 active:shadow-md">
               <svg
                 className="h-6 w-6 text-accent transition-all duration-500 ease-out group-hover:text-[#00071E] group-hover:scale-105"
                 role="img"
@@ -78,9 +72,9 @@ const Hero = () => {
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
               className="group flex h-12 w-12 items-center justify-center rounded-full border-2 border-accent 
-                         shadow-lg shadow-accent/20 transition-all duration-500 ease-out 
-                         hover:bg-accent hover:shadow-xl hover:shadow-accent/30 hover:scale-110 
-                         active:scale-95 active:shadow-md">
+                 shadow-lg shadow-accent/20 transition-all duration-500 ease-out 
+                 hover:bg-accent hover:shadow-xl hover:shadow-accent/30 hover:scale-110 
+                 active:scale-95 active:shadow-md">
               <svg
                 className="h-6 w-6 text-accent transition-all duration-500 ease-out group-hover:text-[#00071E] group-hover:scale-105"
                 viewBox="0 0 24 25"

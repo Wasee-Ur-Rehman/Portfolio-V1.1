@@ -22,9 +22,8 @@ export interface Heading {
 
 export interface Testimonial {
   name: string
-  title?: string
-  feedback: string
+  title: string
   image: string
-  stars: number
-  createdAt: string
+  feedback: string
+  relationship: string
 }

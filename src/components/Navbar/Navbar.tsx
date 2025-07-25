@@ -8,6 +8,7 @@ const navItems = [
   { label: 'Home', href: '/#home', id: 'home' },
   { label: 'Projects', href: '/#projects', id: 'projects' },
   { label: 'Services', href: '/#services', id: 'services' },
+  { label: 'Recommendations', href: '/#recommendations', id: 'recommendations' },
   { label: 'Contact', href: '/#contact', id: 'contact' },
 ]
 
@@ -84,7 +85,7 @@ const Navbar = () => {
           <div className="flex items-center gap-2">
             <Logo />
             <span
-              className={`font-sans text-xl font-bold transition-colors duration-300 ${useBlackText ? 'text-black' : 'text-base-content'}`}
+              className={`font-sans text-xl font-semibold transition-colors duration-300 ${useBlackText ? 'text-black' : 'text-base-content'}`}
             >
               Wasee-Ur-Rehman
             </span>

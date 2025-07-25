@@ -1,49 +1,96 @@
+'use client'
+
 import { Testimonial } from '@/lib/types'
-import { isInViewport } from '@/utils'
-import { StarIcon } from '@/utils/icons'
 import Image from 'next/image'
-import { FC, useEffect, useRef } from 'react'
+import { FC, useState, useEffect, useRef } from 'react'
 
 interface TestimonialCardProps {
   testimonial: Testimonial
-  handleActiveCard: () => void
 }
 
 const TestimonialCard: FC<TestimonialCardProps> = ({
-  testimonial: { name, title, feedback, image, stars },
-  handleActiveCard,
+  testimonial: { name, title, feedback, image, relationship },
 }) => {
-  const cardRef = useRef<HTMLDivElement>(null)
+  const [isExpanded, setIsExpanded] = useState(false)
+  const [isClamped, setIsClamped] = useState(false)
+  const [theme, setTheme] = useState('dark')
+  const feedbackRef = useRef<HTMLParagraphElement>(null)
 
   useEffect(() => {
-    let observer: IntersectionObserver
+    const el = feedbackRef.current
+    if (!el) return
 
-    if (cardRef.current) {
-      observer = isInViewport(cardRef.current, handleActiveCard)
+    const checkClamp = () => {
+      setIsClamped(el.scrollHeight > el.clientHeight + 1) // +1 for rounding
     }
 
-    return () => {
-      observer?.disconnect()
-    }
-  }, [cardRef.current])
+    checkClamp()
+    window.addEventListener('resize', checkClamp)
+    return () => window.removeEventListener('resize', checkClamp)
+  }, [feedback])
+
+  useEffect(() => {
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    if (currentTheme) setTheme(currentTheme)
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'data-theme') {
+          setTheme(document.documentElement.getAttribute('data-theme') || 'dark')
+        }
+      })
+    })
+    observer.observe(document.documentElement, { attributes: true })
+    return () => observer.disconnect()
+  }, [])
+
+  const useBlackText = theme === 'light' || theme === 'retro'
+  const primaryTextColor = useBlackText ? 'text-black' : 'text-base-content'
+  const secondaryTextColor = useBlackText ? 'text-gray-700' : 'text-neutral'
 
   return (
-    <div
-      ref={cardRef}
-      className="bg-secondary border-border flex max-w-full shrink-0 flex-col items-center justify-between gap-4 rounded-2xl border p-4 text-center sm:max-w-[425px]">
-      <p className="text-neutral text-center leading-8 before:content-['“'] after:content-['”']">
-        {feedback}
-      </p>
-      <div>
-        <div className="mb-4 flex items-center gap-1.5">
-          {Array.from({ length: 5 }, (_, idx) => (
-            <StarIcon key={idx} className={idx < stars ? 'text-tag' : 'text-transparent'} />
-          ))}
+    <div className={`w-full sm:w-[420px] shrink-0 rounded-2xl border border-base-300 bg-base-200 p-8 text-left shadow-lg transition-all duration-500 ${!isExpanded ? 'min-h-[28rem]' : ''
+      }`}>
+
+      <div className="flex flex-col h-full">
+        {/* Header */}
+        <div className="flex items-center gap-4">
+          <Image
+            src={image}
+            alt={name}
+            width={56}
+            height={56}
+            className="rounded-full object-cover shadow-md"
+          />
+          <div>
+            <p className={`text-lg font-semibold ${primaryTextColor}`}>{name}</p>
+            <p className={`text-sm ${secondaryTextColor}`}>{title}</p>
+          </div>
         </div>
-        <div>
-          <Image src={image} alt={name} width={50} height={50} className="mx-auto rounded-full" />
-          <p className="text-neutral text-lg font-semibold">{name}</p>
-          <p className="text-neutral/60 text-sm">{title}</p>
+
+        {/* Feedback */}
+        <div className="pt-6">
+          <p
+            ref={feedbackRef}
+            className={`text-base leading-relaxed ${primaryTextColor} ${!isExpanded && 'line-clamp-7'}`}
+          >
+            {feedback}
+          </p>
+
+          {/* Inline toggle below paragraph */}
+          {isClamped && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="mt-2 text-accent text-sm font-semibold hover:underline"
+            >
+              {isExpanded ? 'view Less' : '...view more'}
+            </button>
+          )}
+        </div>
+
+        {/* Footer */}
+        <div className="mt-auto border-t border-base-300/70 pt-4">
+          <p className={`text-xs italic ${secondaryTextColor}`}>{relationship}</p>
         </div>
       </div>
     </div>
