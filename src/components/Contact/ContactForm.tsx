@@ -1,22 +1,46 @@
 'use client'
 
-import action from '@/actions/contact-form'
-import { useActionState } from 'react'
+import { useRef, useState } from 'react'
 import Button from '../UI/Button'
 import Input from '../UI/Input'
 import Textarea from '../UI/Textarea'
 
 const ContactForm = () => {
-  const [status, formAction, isPending] = useActionState(action, null)
+  const formRef = useRef<HTMLFormElement>(null)
+  const [submitted, setSubmitted] = useState(false)
 
-  if (status?.success) {
-    return (
-      <p className="text-accent self-center text-center text-2xl font-medium">{status.message}</p>
-    )
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    const form = formRef.current
+    if (form) {
+      fetch('https://formspree.io/f/mldrrqlg', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: {
+          Accept: 'application/json',
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.ok || data.success) {
+            setSubmitted(true)
+          } else {
+            alert('There was an error submitting the form. Please try again.')
+          }
+        })
+        .catch(() => {
+          alert('Something went wrong. Please check your connection or try again later.')
+        })
+    }
   }
 
-  return (
-    <form action={formAction}>
+  return submitted ? (
+    <p className="text-accent self-center text-center text-2xl font-medium">
+      Thank you! Your message has been sent.
+    </p>
+  ) : (
+    <form ref={formRef} onSubmit={handleSubmit}>
       <Input label="Full name" id="name" name="name" placeholder="Your name here" required />
       <Input
         label="Email address"
@@ -35,8 +59,7 @@ const ContactForm = () => {
         rows={7}
         required
       />
-      {!status?.success && <p className="my-2 font-light text-red-600">{status?.message}</p>}
-      <Button text={isPending ? 'Submitting...' : 'Submit'} disabled={isPending} />
+      <Button text="Submit" />
     </form>
   )
 }
