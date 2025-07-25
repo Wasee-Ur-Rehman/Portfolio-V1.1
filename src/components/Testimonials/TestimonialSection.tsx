@@ -29,15 +29,27 @@ const TestimonialSection: React.FC<TestimonialSectionProps> = ({ recommendations
         title="Recommendations"
         subtitle="Don't just take my word for it - see what my colleagues and mentors have to say about our time working together."
       />
-      <div
-        onScroll={handleScroll}
-        className="hide-scrollbar my-4 flex items-start snap-x snap-mandatory gap-8 overflow-x-auto py-8"
-      >
-        {recommendations.map((recommendation, idx) => (
-          <div key={idx} className="w-[calc(100%-2rem)] flex-shrink-0 snap-center sm:w-auto">
-            <TestimonialCard testimonial={recommendation} />
-          </div>
-        ))}
+
+      {/* Desktop grid + mobile scrollable carousel */}
+      <div>
+        {/* Mobile scrollable layout */}
+        <div
+          onScroll={handleScroll}
+          className="hide-scrollbar my-4 flex snap-x snap-mandatory gap-8 overflow-x-auto py-8 sm:hidden"
+        >
+          {recommendations.map((recommendation, idx) => (
+            <div key={idx} className="w-[calc(100%-2rem)] flex-shrink-0 snap-center">
+              <TestimonialCard testimonial={recommendation} />
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop centered flex-wrap layout */}
+        <div className="hidden sm:flex flex-wrap justify-center gap-8 py-8">
+          {recommendations.map((recommendation, idx) => (
+            <TestimonialCard key={idx} testimonial={recommendation} />
+          ))}
+        </div>
       </div>
 
       {/* Mobile dot indicator */}
